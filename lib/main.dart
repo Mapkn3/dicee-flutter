@@ -27,10 +27,13 @@ class _DicePageState extends State<DicePage> {
   var rightDiceNumber = Random().nextInt(6) + 1;
 
   void changeDiceFace() {
-    setState(() {
-      leftDiceNumber = Random().nextInt(6) + 1;
-      rightDiceNumber = Random().nextInt(6) + 1;
-    });
+    int n = Random().nextInt(6) + 15;
+    Stream.periodic(Duration(milliseconds: 150))
+        .take(n)
+        .forEach((_) => setState(() {
+              leftDiceNumber = Random().nextInt(6) + 1;
+              rightDiceNumber = Random().nextInt(6) + 1;
+            }));
   }
 
   @override
